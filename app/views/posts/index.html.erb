@@ -1,0 +1,10 @@
+<h1>Posts</h1>
+<br>
+<h2><%= link_to "Add A New Blog Post", new_post_path %></h2>
+
+
+
+<h3>All Blog Posts</h3>
+<% @posts.each do |post| %>
+  <h3><%= link_to "#{post.title} by #{post.blogger.name}", post_path(post) %></h3>
+<% end %>

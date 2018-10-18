@@ -1,0 +1,18 @@
+<h1><%= @blogger.name %></h1>
+<br>
+<h4>Age: <%= @blogger.age %></h4>
+<h4>Bio: <%= @blogger.bio %></h4>
+<br>
+<h4>Total Likes Received: <%= @like_count %></h4>
+
+<h3>Most Liked Post</h3>
+<% if @most_liked.nil? %>
+  <p><%= "This Blogger Has Not Made Any Posts Yet" %></p>
+  <% else %>
+  <%= link_to "#{@most_liked.title} in #{@most_liked.destination.name}", @most_liked %>
+<% end %>
+<br>
+<h3>All Posts</h3>
+<% @blogger.posts.each do |post| %>
+<p><%= link_to post.title, post_path(post) %></p><br>
+<% end %>

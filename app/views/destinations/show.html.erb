@@ -1,0 +1,22 @@
+<h1><%= @destination.name %>, <%= @destination.country%></h1>
+<h2>The Top Rated Blog For <%= @destination.name %></h2>
+<div>
+  <% if @most_liked.nil? %>
+    <h3><%= "This Destination Has No Blog Posts yet" %></h3>
+    <% else %>
+    <%= link_to "#{@most_liked.title} by #{@most_liked.blogger.name}", @most_liked %>
+  <% end %>
+</div>
+<br>
+<h2>The Most Recent Blogs For <%= @destination.name %></h2>
+<div>
+  <% if @most_recent.empty? %>
+    <h3><%= "This Destination Has No Blog Posts yet" %></h3>
+  <% else %>
+    <% @most_recent.each do |post| %>
+      <p><%= link_to "#{post.title} by #{post.blogger.name}", post_path(post) %></p><br>
+    <% end %>
+  <% end %>
+</div>
+
+<h3>The average age for bloggers writing about <%= @destination.name %> is: <%= @ave_age %></h3>

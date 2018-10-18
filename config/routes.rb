@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :destinations, only: [:index, :show]
+  resources :bloggers
+  resources :posts
+
+  post '/posts/:id/likes', to: 'posts#add_likes', as: 'like'
+
 end
